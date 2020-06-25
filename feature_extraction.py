@@ -42,14 +42,14 @@ def prepare_response(input,features):
         return response
     elif(check_synonym(input,color_synonyms,features['color'])):
         if features['color'] !=0:
-            response = "Please select the manufacturer, among the following"
+            response = "Please select the manufacturer"
         else:
             response = "Sorry we dont have that color product,select among the following"
         return response
 
     elif(check_synonym(input,company_synonyms,features['company'])):
         if(features['company'] != 0):
-            response = "Please select the color among the following"
+            response = "Please select the color "
         else:
             response = "Sorry we dont have that company product,select among the following"
         return response
@@ -85,8 +85,9 @@ def get_response(inputs):
         pos_comb = possible_queries(color_res,company_res)
         print("possible queries: ",pos_comb)
         response = prepare_response(input,features)
-        print("response :", response)
+        print("response:", response)
         print()
         return response,pos_comb
 
-print(get_response(inputs[:1]))
+# print(get_response(inputs))
+
