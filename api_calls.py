@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
-from Feature_extraction import get_response
+from feature_extraction import get_response
 import json
+from flask_cors import CORS
 
 # initialize our Flask application
 app= Flask(__name__)
+CORS(app)
 
 def make_json(response,query_comb):
     json_resp = {'response':response, 'query_comb':query_comb }
@@ -27,4 +29,4 @@ def message():
     return jsonify(" Hope you are having a good time " +  name + "!!!")
 #  main thread of execution to start the server
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(host = "0.0.0.0",port ="80")
