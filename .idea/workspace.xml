@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61300c81-b38a-488f-9719-58a4c6f332be" name="Default Changelist" comment="" />
+    <list default="true" id="61300c81-b38a-488f-9719-58a4c6f332be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_calls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_calls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +17,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1dHaoB4Nw7gtvqAIdMh66bSdBsP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -23,9 +30,32 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Python.cb">
+  <component name="RunManager" selected="Python.api_calls">
+    <configuration name="api_calls" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ChatBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api_calls.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="cb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ChatBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -72,6 +102,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.api_calls" />
         <item itemvalue="Python.cb" />
         <item itemvalue="Python.test_api" />
       </list>
@@ -91,6 +122,9 @@
       <workItem from="1592333490510" duration="1528000" />
       <workItem from="1592805019578" duration="646000" />
       <workItem from="1592805819729" duration="8235000" />
+      <workItem from="1593042201285" duration="395000" />
+      <workItem from="1593102149334" duration="586000" />
+      <workItem from="1593117800221" duration="354000" />
     </task>
     <servers />
   </component>
@@ -106,22 +140,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="470" y="293" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1440.900@0.0.1440.900" timestamp="1592334411841" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1593019137306">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1593116430791">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1593019137306" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1593019137304">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1593102273829" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.801@0.23.1440.801" timestamp="1593116430791" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1593116430789">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1593019137304" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1593019137303">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1593102273826" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.801@0.23.1440.801" timestamp="1593116430789" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1593116430788">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1593019137303" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1593019137305">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1593102273824" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.801@0.23.1440.801" timestamp="1593116430788" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1593116430790">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1593019137305" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1593102273827" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.801@0.23.1440.801" timestamp="1593116430790" />
     <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1593019137242">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -148,7 +186,8 @@
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1592805452121" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ChatBot$api_calls.coverage" NAME="api_calls Coverage Results" MODIFIED="1593102273798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ChatBot$test_api.coverage" NAME="test_api Coverage Results" MODIFIED="1592813675663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ChatBot$cb.coverage" NAME="cb Coverage Results" MODIFIED="1592815068179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatBot$cb.coverage" NAME="cb Coverage Results" MODIFIED="1593102174732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
