@@ -1,7 +1,5 @@
-import numpy as np
-import pandas as pd
+
 from unique_features import *
-import re
 import collections
 
 def check_color(features,input):
