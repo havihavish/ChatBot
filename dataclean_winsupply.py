@@ -32,6 +32,7 @@ def split_product(row):
 df['Product name'] = df['Product name'].apply(split_product)
 
 df.head()
+df = df.drop('Weight',axis =1)
 
 df.to_csv('dataclean_winsupply.csv')
 
