@@ -44,10 +44,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(`I'm sorry, can you try again?`);
   }
 
-  function myCustomHandler(agent) {
-    agent.add(`Hi! I am bot and I am virtual assistant of Win Supply. Plase choose an option`);
-    agent.add(new Suggestion(`View Products`));
-    agent.add(new Suggestion(`Vendor Relations`));
+  function defaultWelcomeIntent(agent) {
+    agent.requestSource = "ACTIONS_ON_GOOGLE";
+    let conv = agent.conv();
+    conv.ask('Hi! I am bot and I am virtual assistant of Win Supply. Plase choose an option');
+    conv.ask(new Suggestions(['View Products', 'Vendor Relations']));
+    agent.add(conv);
   }
 
   function suggestions(agent) {
@@ -78,42 +80,35 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(conv);
   }
 
-  function apiHandler(agent) {
-    const text = agent.parameters.text;
-    return axios.get(`https://api.datamuse.com/words?rel_rhy=${text}`)
-      .then((result) => {
-        result.data.slice(0, 3).map(wordObj => {
-          agent.add(wordObj.word);
-        });
-      });
-  }
-  async function browseCarousel(agent) {
+  async function browseCarousel(agent, product_name, color, company) {
 
     agent.requestSource = "ACTIONS_ON_GOOGLE";
-
-    let res = await axios.get(`http://54.84.123.253:8983/solr/winsupply/select?q=*:*`);
+    let res = await axios.get(`http://54.84.123.253:8983/solr/winsupply/select?q=%22${product_name}%22AND(%22${color}%22OR%22${product_name}%22)`);
     const result = res.data.response.docs;
 
+    console.log(color + ' ' + company);
+    console.log(result[0].product_name);
+
     let conv = agent.conv();
-    conv.ask('This is a browse carousel example from fulfillment.');
-    // Create a browse carousel
+    conv.ask(`Here are the ${product_name} of ${color} color and ${company} manufacturer`);
+
     conv.ask(new BrowseCarousel({
       items: [
         new BrowseCarouselItem({
           title: result[0].product_name,
-          url: result[0].link[0],
+          url: result[0].url_link,
           image: new Image({
-            url: 'https://pimmedia.winsupplyinc.com/pim/L/112017/MOEN-FAUCETS_6410BN_12446410BN_L.jpg',
-            alt: 'bathroom faucet',
+            url: result[0].image_link,
+            alt: result[0].product_name,
           }),
-          //Supported in next update
+
         }),
         new BrowseCarouselItem({
           title: result[1].product_name,
-          url: result[1].link[0],
+          url: result[1].url_link,
           image: new Image({
-            url: 'https://pimmedia.winsupplyinc.com/pim/L/112017/MOEN-FAUCETS_6410BN_12446410BN_L.jpg',
-            alt: 'bathroom faucet',
+            url: result[1].image_link,
+            alt: result[1].product_name,
           }),
         }),
       ],
@@ -121,10 +116,85 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     agent.add(conv);
   }
 
-  // Run the proper function handler based on the matched Dialogflow intent name
+  async function bathroomfaucet_color_manufacturer(agent) {
+
+    const color = agent.context.get('bathroomfaucet-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'bathroom faucets';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+
+  async function bathroomsink_color_manufacturer(agent) {
+
+    const color = agent.context.get('bathroomsink-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'bathroom sinks';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+
+  async function kitchenfaucet_color_manufacturer(agent) {
+
+    const color = agent.context.get('kitchenfaucet-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'kitchen faucets';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+  async function kitchensink_color_manufacturer(agent) {
+
+    const color = agent.context.get('kitchensink-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'kitchen sinks';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+  async function kitchenwaterdispenser_color_manufacturer(agent) {
+
+    const color = agent.context.get('kitchenwaterdispenser-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'kitchen water dispensers';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+  async function showerandtubfaucet_color_manufacturer(agent) {
+
+    const color = agent.context.get('showerandtubfaucet-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'shower and tub faucets';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+  async function waterfiltration_color_manufacturer(agent) {
+
+    const color = agent.context.get('waterfiltration-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'water filtration';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+  async function watersoftening_color_manufacturer(agent) {
+
+    const color = agent.context.get('watersoftening-color-followup').parameters.color;
+    const company = agent.parameters.manufacturer;
+    const product_name = 'water softening';
+
+    await browseCarousel(agent, product_name, color, company);
+  }
+
+
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', browseCarousel);
+  intentMap.set('Default Welcome Intent', defaultWelcomeIntent);
   intentMap.set('Default Fallback Intent', fallback);
-  intentMap.set('apicalls', apiHandler);
+  intentMap.set('BathroomFaucet-color-manufacturer', bathroomfaucet_color_manufacturer);
+  intentMap.set('BathroomSink-color-manufacturer', bathroomsink_color_manufacturer);
+  intentMap.set('KitchenFaucet-color-manufacturer', kitchenfaucet_color_manufacturer);
+  intentMap.set('KitchenSink-color-manufacturer', kitchensink_color_manufacturer);
+  intentMap.set('KitchenWaterDispenser-color-manufacturer', kitchenwaterdispenser_color_manufacturer);
+  intentMap.set('ShowerAndTubFaucet-color-manufacturer', showerandtubfaucet_color_manufacturer);
+  intentMap.set('WaterFiltration-color-manufacturer', waterfiltration_color_manufacturer);
+  intentMap.set('WaterSoftening-color-manufacturer', watersoftening_color_manufacturer);
+
   agent.handleRequest(intentMap);
 });
