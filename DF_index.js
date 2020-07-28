@@ -83,7 +83,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   async function browseCarousel(agent, product_name, color, company) {
 
     agent.requestSource = "ACTIONS_ON_GOOGLE";
-    let res = await axios.get(`http://54.84.123.253:8983/solr/winsupply/select?q=%22${product_name}%22AND(%22${color}%22OR%22${product_name}%22)`);
+    let res = await axios.get(`http://54.84.123.253:8983/solr/winsupply/select?q=%22${product_name}%22AND(%22${color}%22OR%22${company}%22)`);
     const result = res.data.response.docs;
 
     console.log(color + ' ' + company);
@@ -184,9 +184,106 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
 
+// Pipes and fittings details
+
+async function pipe_material_manufacturer(agent) {
+
+  const color = agent.context.get('pipe-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'pipe';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function dielectricPipeFitting_material_manufacturer(agent) {
+
+  const color = agent.context.get('dielectricpipefitting-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'dielectric pipe fittings';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function flexiblePipeFitting_material_manufacturer(agent) {
+
+  const color = agent.context.get('flexiblepipefitting-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'flexible pipe fittings';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function barbedTubeFitting_material_manufacturer(agent) {
+
+  const color = agent.context.get('barbedtubefitting-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'barbed tube fittings';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function compressionTubeFitting_material_manufacturer(agent) {
+
+  const color = agent.context.get('compressiontubefitting-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'compression tube fittings';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function flaredTubeFitting_material_manufacturer(agent) {
+
+  const color = agent.context.get('flaredtubefitting-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'flared tube fittings';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function tubing_material_manufacturer(agent) {
+
+  const color = agent.context.get('tubing-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'tubing';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+
+// Valve product details
+
+async function butterflyValve_material_manufacturer(agent) {
+
+  const color = agent.context.get('butterflyvalve-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'butterfly valves';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function ballValve_material_manufacturer(agent) {
+
+  const color = agent.context.get('ballvalve-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'ball valves';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function sillcock_material_manufacturer(agent) {
+
+  const color = agent.context.get('sillcock-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'sillcocks';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+async function supplystopValve_material_manufacturer(agent) {
+
+  const color = agent.context.get('supplystopvalve-material-followup').parameters.material;
+  const company = agent.parameters.manufacturer;
+  const product_name = 'supply stop valves';
+
+  await browseCarousel(agent, product_name, color, company);
+}
+
+
+
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', defaultWelcomeIntent);
   intentMap.set('Default Fallback Intent', fallback);
+//intents for Plumbing
   intentMap.set('BathroomFaucet-color-manufacturer', bathroomfaucet_color_manufacturer);
   intentMap.set('BathroomSink-color-manufacturer', bathroomsink_color_manufacturer);
   intentMap.set('KitchenFaucet-color-manufacturer', kitchenfaucet_color_manufacturer);
@@ -195,6 +292,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('ShowerAndTubFaucet-color-manufacturer', showerandtubfaucet_color_manufacturer);
   intentMap.set('WaterFiltration-color-manufacturer', waterfiltration_color_manufacturer);
   intentMap.set('WaterSoftening-color-manufacturer', watersoftening_color_manufacturer);
+
+//intent for pipes and fittings
+  intentMap.set('Pipe-material-manufacturer', pipe_material_manufacturer);
+  intentMap.set('DielectricPipeFitting-material-manufacturer', dielectricPipeFitting_material_manufacturer);
+  intentMap.set('FlexiblePipeFitting-material-manufacturer', flexiblePipeFitting_material_manufacturer);
+  intentMap.set('BarbedTubeFitting-material-manufacturer', barbedTubeFitting_material_manufacturer);
+  intentMap.set('CompressionTubeFitting-material-manufacturer', compressionTubeFitting_material_manufacturer);
+  intentMap.set('FlaredTubeFitting-material-manufacturer', flaredTubeFitting_material_manufacturer);
+  intentMap.set('Tubing-material-manufacturer', tubing_material_manufacturer);
+
+//intent for valves
+  intentMap.set('ButterflyValve-material-manufacturer', butterflyValve_material_manufacturer);
+  intentMap.set('BallValve-material-manufacturer', ballValve_material_manufacturer);
+  intentMap.set('Sillcock-material-manufacturer', sillcock_material_manufacturer);
+  intentMap.set('SupplystopValve-material-manufacturer', supplystopValve_material_manufacturer);
 
   agent.handleRequest(intentMap);
 });
